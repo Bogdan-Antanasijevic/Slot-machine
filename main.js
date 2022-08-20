@@ -14,6 +14,7 @@ function leftArrow(e) {
     if (e.keyCode === 37) {
         db.moveLeft();
         db.startSpin();
+        db.checkLeftLines();
     }
 }
 //MOVE SIGNS IN MIDDLE MAIN BOX
@@ -23,6 +24,7 @@ function downArrow(e) {
     if (e.keyCode === 40) {
         db.moveMiddle();
         db.startSpin();
+        db.checkMiddleLines();
     }
 }
 
@@ -33,6 +35,15 @@ function rightArrow(e) {
     if (e.keyCode === 39) {
         db.moveRight();
         db.startSpin();
+        db.checkRightLines();
     }
 }
 
+// BUY 1 MORE SPIN
+document.addEventListener('keyup',buySpin);
+function buySpin(e) {
+    e.preventDefault();
+    if (e.keyCode === 32) {
+        db.buySpin();
+    }
+}
