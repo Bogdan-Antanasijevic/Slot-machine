@@ -4,13 +4,13 @@ class Db {
     result = 0;
     arr = [];
     pointsArr = [];
-    finalSum = []
+    finalSum = [];
     constructor(images, result, arr, pointsArr, finalSum) {
         this.arr = [];
         this.images = images;
         this.result = 0;
         this.pointsArr = [];
-        this.finalSum = [];
+        this.finalSum = [];        
     }
 
 
@@ -154,7 +154,7 @@ class Db {
             let box1 = boxesRight[column[0]];
             let box2 = boxesRight[column[1]];
             let box3 = boxesRight[column[2]];
-            
+
             let text = `
             <img src="images/${this.arr[i]}.png" alt = "images/${this.arr[i]}.png" data-points = ${this.images[this.arr[i]].points}></img>
             `
@@ -208,30 +208,29 @@ class Db {
             let line3 = boxesLeft[line[2]];
 
             if (line1.childNodes[1].alt == line2.childNodes[1].alt && line1.childNodes[1].alt == line3.childNodes[1].alt && !line1.childNodes[1].alt == "") {
-                console.log('pogodak');
                 line1.style.border = "5px solid green"
                 line2.style.border = "5px solid green"
                 line3.style.border = "5px solid green"
 
                 sumPoints(this.finalSum);
                 this.finalSumPoints();
-                
-            }
 
-            function sumPoints (finalSum){
+            }                        
+
+            function sumPoints(finalSum) {
                 let num1 = parseInt(line1.childNodes[1].attributes[2].nodeValue)
                 let num2 = parseInt(line2.childNodes[1].attributes[2].nodeValue)
                 let num3 = parseInt(line3.childNodes[1].attributes[2].nodeValue)
-                
+
                 let sum = num1 + num2 + num3
                 console.log(resultBoxLeft);
                 resultBoxLeft.style.background = 'rgb(5, 252, 58)'
                 resultBoxLeft.style.border = '2px solid black'
                 resultBoxLeft.innerHTML = sum;
-                 console.log(sum);
-                 finalSum.push(sum);                
-                 console.log(finalSum);
-                
+                console.log(sum);
+                finalSum.push(sum);
+                console.log(finalSum);
+
             }
 
         })
@@ -255,29 +254,28 @@ class Db {
             let line3 = boxesMiddle[line[2]];
 
             if (line1.childNodes[1].alt == line2.childNodes[1].alt && line1.childNodes[1].alt == line3.childNodes[1].alt && !line1.childNodes[1].alt == "") {
-                console.log('pogodak');
                 line1.style.border = "5px solid green"
                 line2.style.border = "5px solid green"
                 line3.style.border = "5px solid green"
-                
+
                 sumPoints(this.finalSum);
                 this.finalSumPoints();
-                
+
             }
 
-            function sumPoints (finalSum){
+            function sumPoints(finalSum) {
                 let num1 = parseInt(line1.childNodes[1].attributes[2].nodeValue)
                 let num2 = parseInt(line2.childNodes[1].attributes[2].nodeValue)
                 let num3 = parseInt(line3.childNodes[1].attributes[2].nodeValue)
-                
+
                 let sum = num1 + num2 + num3
                 resultBoxMiddle.style.background = 'rgb(5, 252, 58)'
                 resultBoxMiddle.style.border = '2px solid black'
                 resultBoxMiddle.innerHTML = sum;
-                 console.log(sum);
-                 finalSum.push(sum);
-                 console.log(finalSum);
-                
+                console.log(sum);
+                finalSum.push(sum);
+                console.log(finalSum);
+
             }
 
         })
@@ -299,41 +297,39 @@ class Db {
             let line1 = boxesRight[line[0]];
             let line2 = boxesRight[line[1]];
             let line3 = boxesRight[line[2]];
-         
+
             if (line1.childNodes[1].alt == line2.childNodes[1].alt && line1.childNodes[1].alt == line3.childNodes[1].alt && !line1.childNodes[1].alt == "") {
-                console.log('pogodak');
                 line1.style.border = "5px solid green"
                 line2.style.border = "5px solid green"
                 line3.style.border = "5px solid green"
-                
-                sumPoints(this.finalSum);  
+
+                sumPoints(this.finalSum);
                 this.finalSumPoints();
-                
+
             }
 
-            function sumPoints (finalSum){
+            function sumPoints(finalSum) {
                 let num1 = parseInt(line1.childNodes[1].attributes[2].nodeValue)
                 let num2 = parseInt(line2.childNodes[1].attributes[2].nodeValue)
                 let num3 = parseInt(line3.childNodes[1].attributes[2].nodeValue)
-                
+
                 let sum = num1 + num2 + num3
                 resultBoxRight.style.background = 'rgb(5, 252, 58)'
                 resultBoxRight.style.border = '2px solid black'
                 resultBoxRight.innerHTML = sum;
-                 console.log(sum);
-                 finalSum.push(sum);
-                 console.log(finalSum);
+                console.log(sum);
+                finalSum.push(sum);
+                console.log(finalSum);
             }
         })
     }
 
-    finalSumPoints (){
+    finalSumPoints() {
         let sumArr = this.finalSum
         const reducer = (prevNum, currNum) => prevNum + currNum;
-        console.log('rezultat',sumArr.reduce(reducer));
-        
+        let result = sumArr.reduce(reducer);
+        console.log('result', result);
+
     }
-
-};
-
+}
 let db = new Db(images);
